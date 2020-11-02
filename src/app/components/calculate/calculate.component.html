@@ -1,0 +1,27 @@
+<div class="container mt-4 col-md-4">
+    <form [formGroup]="form">
+        <h3 class="h3 mb-3 font-weight-normal text-center">Calculate</h3>
+        <input type="text" class="form-control mb-3" placeholder="idTechnician" formControlName="idTechnician" required>
+        <input type="text" class="form-control mb-3" placeholder="weekNumber" formControlName="weekNumber" required>
+        <button class="btn btn-primary" [disabled]="form.get('idTechnician').invalid || form.get('weekNumber').invalid" (click)='calculate()'>Calculate</button>
+    </form>
+    <ng-container *ngIf="response===true; else error">
+        <div class="card text-center bg-primary mt-2">
+            <div class="card-header">
+                <p class="text-white">Total Hours</p>                
+            </div>
+            <div class="card-body text-white">
+                <p>Week Hours: {{object.weekH}}</p>
+                <p>Normal Hours: {{object.normalH}}</p>
+                <p>Night Hours: {{object.nightH}}</p>
+                <p>Sunday Hours: {{object.sundayH}}</p>
+                <p>Extra Hours{{object.normalExtraH}}</p>
+                <p>Night Extra Hours {{object.nightExtraH}}</p>
+                <p>Sunday Extra Hours {{object.sundayExtraH}}</p>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #error>
+        <div *ngIf="message" class="alert alert-secondary" role="alert">{{message}}</div>
+    </ng-template>
+</div>

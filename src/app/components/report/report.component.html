@@ -1,0 +1,12 @@
+<div class="container mt-4 col-md-4">
+    <form [formGroup]="form">
+        <h3 class="h3 mb-3 font-weight-normal text-center">Report</h3>
+        <input type="text" class="form-control mb-3" placeholder="idTechnician" formControlName="idTechnician" required>
+        <input type="datetime-local" class="form-control mb-3" placeholder="startService" formControlName="startService" required>
+        <input type="datetime-local" class="form-control mb-3" placeholder="endService" formControlName="endService" required>
+        <input type="text" class="form-control mb-3" placeholder="idService" formControlName="idService" required>        
+        <button class="btn btn-primary" [disabled]="form.get('idTechnician').invalid || form.get('startService').invalid
+        || form.get('endService').invalid || form.get('idService').invalid" (click)='report()'>Report</button>
+    </form>
+    <div *ngIf="message" class="alert alert-secondary" role="alert">{{message}}</div>
+</div>
