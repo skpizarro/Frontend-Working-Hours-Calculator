@@ -5,12 +5,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataService {
-  private URL = 'http://localhost:3000/';
+  private URL = 'http://localhost:3000/api/';
 
   constructor(private http:HttpClient) { }
 
   calculate(body) {
-    return this.http.get<any>(`${this.URL}calculate?idTechnician=${body.idTechnician}&weekNumber=${body.weekNumber}`);
+    return this.http.get<any>(`${this.URL}calculate/?idTechnician=${body.idTechnician}&weekNumber=${body.weekNumber}`);
   }
 
   report(body) {
